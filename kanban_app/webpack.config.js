@@ -1,5 +1,6 @@
 var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack');
 
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
@@ -11,7 +12,19 @@ module.exports = {
         path: BUILD_PATH,
         filename: 'bundle.js'
     },
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        progress: true,
+
+        //parse host and port from env so this
+        //is easy to customize
+        host: process.env.HOST,
+        port: process.env.PORT
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlwebpackPlugin({
             title: 'Kanban app'
         })

@@ -1,7 +1,7 @@
-module.exports = function() {
-    var element = document.createElement('hl');
+module.exports = function () {
+    var element = document.createElement('h1');
 
-    element.innerHtml = 'Hello world';
+    element.innerHTML = 'Hello world';
 
     return element;
-}
+};
