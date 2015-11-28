@@ -9,6 +9,9 @@ var APP_PATH = path.resolve(ROOT_PATH, 'app');
 
 var common = {
     entry: APP_PATH,
+    resolve: {
+            extensions: ['', '.js', '.jsx']
+    },
     module: {
         loaders: [
             {
@@ -19,8 +22,6 @@ var common = {
         ]
     },
     plugins: [
-        // important! move HotModuleReplacementPlugin below
-        //new webpack.HotModuleReplacementPlugin(),
         new HtmlwebpackPlugin({
           title: 'Kanban app'
         })
