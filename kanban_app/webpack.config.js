@@ -9,6 +9,8 @@ const PATHS = {
     build: path.join(__dirname, 'build')
 };
 
+process.env.BABEL_ENV = TARGET;
+
 var common = {
     entry: PATHS.app,
     resolve: {
@@ -37,21 +39,18 @@ var common = {
 
 if(TARGET === 'start' || !TARGET) {
     module.exports = merge(common, {
-    devtool: 'eval-source-map',
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true,
+        devtool: 'eval-source-map',
+        devServer: {
+            historyApiFallback: true,
+            hot: true,
+            inline: true,
+            progress: true,
 
-        // display only errors to reduce the amount of output
-        stats: 'errors-only',
+            stats: 'errors-only',
 
-        // parse host and port from env so this is easy
-        // to customize
-        host: process.env.HOST,
-        port: process.env.PORT
-    },
+            host: process.env.HOST,
+            port: process.env.PORT
+        },
         plugins: [
             new webpack.HotModuleReplacementPlugin()
         ]
